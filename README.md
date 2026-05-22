@@ -1,120 +1,343 @@
-Here’s a clean, well-structured prompt you can give to Claude:
+I have already shared and implemented the redesigned Store system files earlier.
 
----
+Now continue the implementation using the attached `game_screen.dart` and fully integrate all remaining gameplay-related features while MAINTAINING COMPLETE UI CONSISTENCY across the entire app.
 
-**Prompt for Claude:**
+IMPORTANT:
+Do NOT redesign randomly.
+Preserve my existing visual identity, theme system, glow styles, spacing patterns, gradients, and premium neon puzzle-game aesthetics already used in:
 
-You are working on improving an existing game app. Follow the requirements below carefully and make changes only where specified.
+* themes
+* store screen
+* game board
+* buttons
+* cards
+* dialogs
+* animations
 
-### 1. App Flow (Important)
+Your task is to deeply analyze the current architecture and continue from the previous implementation.
 
-* After the app loads, the **authentication flow must remain unchanged**.
-* Once authentication is complete, the user should see a **“Start” button (replace the current “Play” button)**.
-* On clicking “Start”, navigate to the **Levels Page**.
-* The game has multiple levels:
+==================================================
+MAIN GOAL
+=========
 
-  * Completing a level unlocks the next level.
-  * Difficulty should increase progressively with each level.
-  * Based on coins earned in each level, the user is awarded **stars (max 3 stars per level)**.
+Transform the gameplay experience into a polished premium casual puzzle game with:
 
-### 2. Preserve Existing Logic
+* smooth UX
+* aligned layouts
+* responsive design
+* clean app flow
+* rewarding gameplay loop
+* premium game feel
 
-* Do NOT modify:
+Focus heavily on:
 
-  * Authentication flow
-  * Core game logic
-  * Existing app logic
-* Only enhance UI/UX and add missing flow changes mentioned above.
+* alignment consistency
+* spacing consistency
+* animation consistency
+* responsive layout fixes
+* gameplay polish
+* micro interactions
+* premium mobile game quality
 
-### 3. UI Theme Upgrade
+==================================================
+VERY IMPORTANT — GLOBAL ALIGNMENT FIX
+=====================================
 
-* Replace existing color scheme with a **bright dark theme**.
-* Use **vibrant gradients**, glossy highlights, and a **slightly neon/glitter aesthetic**.
-* Blocks should have a **shiny, glassy, or glossy appearance**.
-* Avoid dull or flat colors.
+Before implementing features:
 
-### 4. Board & Block Design Improvements
+Analyze the ENTIRE app flow and UI structure.
 
-* Remove the **forest theme completely**.
-* Keep the remaining 3 themes intact.
-* On block selection:
+Fix:
 
-  * Add glowing highlight effect with glitter-like animation.
-* Improve board layout:
+* misaligned widgets
+* inconsistent paddings
+* uneven margins
+* overflowing layouts
+* broken responsive scaling
+* inconsistent button sizing
+* spacing issues
+* unsafe bottom layouts
+* awkward scroll behavior
+* clipped cards
+* improper aspect ratios
+* inconsistent dialog layouts
 
-  * Add subtle **3D effects / depth**
-  * Make blocks look **embossed or raised**
-  * Enhance visual hierarchy to make gameplay more attractive and engaging
+Ensure the whole app feels professionally polished.
 
-### 5. Default Theme
+Maintain consistency between:
 
-* Keep any one of the remaining themes as the **default theme**.
+* Home screen
+* Game screen
+* Store screen
+* Dialogs
+* Reward popups
+* Theme system
+* Powerup HUD
+* Bottom sections
 
----
+Use proper Flutter responsive architecture:
 
-### Goal
+* SafeArea
+* Expanded/Flexible
+* AspectRatio
+* LayoutBuilder
+* MediaQuery where needed
 
-Improve the visual appeal and level progression flow of the app without breaking existing authentication or game logic. Focus heavily on modern, glossy, neon-dark UI aesthetics and smooth level progression experience.
+Avoid:
 
+* hardcoded heights
+* overflow hacks
+* inconsistent spacing values
+* deeply nested bad layouts
 
-Prompt for Claude:
+==================================================
+FEATURES TO IMPLEMENT INSIDE game_screen.dart
+=============================================
 
-You are working inside an existing Flutter game project.
-You must be extremely careful and only modify UI and specified flow changes.
+Implement all gameplay powerup systems fully.
 
-⚠️ STRICT RULE (MOST IMPORTANT)
-DO NOT modify or refactor existing:
-authentication system
-game logic
-level logic
-state management
-Firebase integration
-DO NOT rename files or restructure folders
-ONLY edit UI + add small required flow wrappers
-1. App Flow Change ONLY
-Authentication flow must remain exactly the same
-After login, replace current “Play” button with “Start” button
-On clicking “Start” → navigate to Levels Page
-2. Levels Behavior (NO LOGIC CHANGE)
-Keep existing level system intact
-Only UI behavior additions:
-Completing a level unlocks next level (already existing logic must be used, not rewritten)
-Show stars (max 3) based on coins (use existing data, do not recalculate logic)
-3. NEW UI BEHAVIOR (SAFE ADDITION ONLY)
-When user clicks an unlocked level:
-DO NOT start game directly
-Show a modal popup
-Popup contains a “Play” button
-Only this button starts the game
-Locked levels must NOT open popup
-4. UI IMPROVEMENTS ONLY (NO LOGIC TOUCH)
-Apply bright dark neon/glossy theme
-Add gradients, glow, glassmorphism effects
-Make blocks shiny and visually rich
-Add subtle glitter animation on selection
-Add 3D / embossed look to board and blocks
-5. Theme Rules
-Remove ONLY forest theme
-Keep all other themes unchanged
-Default theme: keep existing default (do not change unless necessary)
-6. VERY IMPORTANT CONSTRAINT
-If something is unclear, prefer NOT changing logic
-Only wrap or extend UI components
-Do NOT rewrite game engine, scoring system, or level progression code
-Goal
+==================================================
 
-Enhance UI/UX and add a safe level-start popup flow WITHOUT breaking or rewriting existing game logic.
+1. POWERUP HUD
+   ==================================================
 
-🔥 Why this version is safer
+Add a premium bottom gameplay HUD showing:
 
-I added protections that prevent Claude from:
+* Hammer
+* Bomb
+* Lightning
+* Shuffle
+* Freeze Time
+* Rainbow Block
+* Combo Booster
 
-rewriting your level system
-touching Firebase/auth
-“improving” logic incorrectly
-restructuring Flutter architecture
-💡 Extra tip (high impact)
+Each HUD item should show:
 
-If you want even safer results, add this line at the end:
+* icon
+* quantity owned
+* active/inactive state
+* glow animation when usable
+* tap feedback
+* disabled appearance if unavailable
 
-“Treat the codebase as production-critical. Minimal diffs only.”
+Maintain premium neon gaming aesthetics.
+
+==================================================
+2. HAMMER POWERUP
+=================
+
+Function:
+Player taps Hammer → selects a block → block breaks.
+
+Requirements:
+
+* selection highlight animation
+* particle effect
+* decrement inventory
+* smooth feedback
+
+==================================================
+3. BOMB POWERUP
+===============
+
+Function:
+Explodes nearby blocks in radius.
+
+Requirements:
+
+* explosion animation
+* glow pulse
+* particle effect
+* board update animation
+
+==================================================
+4. LIGHTNING POWERUP
+====================
+
+Function:
+Clear entire row or column.
+
+Add:
+
+* electric animation
+* row/column highlight
+* screen flash effect
+
+==================================================
+5. SHUFFLE POWERUP
+==================
+
+Function:
+Rearrange available pieces intelligently.
+
+Requirements:
+
+* smooth reshuffle animation
+* satisfying transitions
+
+==================================================
+6. FREEZE TIME
+==============
+
+Function:
+Temporarily slows gameplay or pauses difficulty progression.
+
+Add:
+
+* frozen overlay effect
+* countdown UI
+* icy animation
+
+==================================================
+7. RAINBOW BLOCK
+================
+
+Function:
+Acts as wildcard block.
+
+Requirements:
+
+* rainbow glow
+* animated gradient effect
+* premium visuals
+
+==================================================
+8. COMBO BOOSTER
+================
+
+Function:
+Temporary score multiplier.
+
+Requirements:
+
+* combo meter UI
+* animated multiplier
+* reward feedback
+
+==================================================
+9. GAME OVER REVIVE FLOW
+========================
+
+Fully integrate the previously created GameOverReviveDialog.
+
+Flow:
+Game Over →
+Show premium revive dialog →
+Options:
+
+* Watch Ad to Continue
+* Use Hammer
+* Use Bomb
+* Restart
+
+Requirements:
+
+* blurred background
+* countdown timer
+* premium modal animations
+* smooth transitions
+* consistent spacing/alignment
+
+Only show powerup options if inventory exists.
+
+==================================================
+10. REWARDED ADS FLOW
+=====================
+
+Integrate rewarded ads properly with gameplay.
+
+Examples:
+
+* revive with ad
+* extra moves
+* free coins
+* reward claim
+
+Requirements:
+
+* loading states
+* error handling
+* success feedback
+* smooth UX
+
+Ads should feel rewarding, not annoying.
+
+==================================================
+11. GAMEPLAY FEEDBACK IMPROVEMENTS
+==================================
+
+Improve:
+
+* score animations
+* combo effects
+* line clear animations
+* haptic-like visual feedback
+* glowing effects
+* reward celebrations
+
+Make gameplay feel satisfying and premium.
+
+==================================================
+12. PERFORMANCE OPTIMIZATION
+============================
+
+Optimize:
+
+* animations
+* rebuilds
+* board rendering
+* particle effects
+* scrolling
+* state updates
+
+Avoid lag and frame drops.
+
+==================================================
+13. RESPONSIVE DESIGN
+=====================
+
+Ensure everything works properly on:
+
+* small Android devices
+* tablets
+* tall screens
+* landscape if possible
+
+Fix all:
+
+* overflow issues
+* bottom clipping
+* carousel scaling issues
+* HUD spacing problems
+
+==================================================
+14. CLEAN ARCHITECTURE
+======================
+
+Refactor where necessary:
+
+* reusable widgets
+* helper classes
+* animation components
+* dialogs
+* powerup handlers
+
+Maintain scalable Flutter architecture.
+
+==================================================
+15. FINAL POLISH
+================
+
+The final app should feel:
+
+* premium
+* modern
+* addictive
+* polished
+* smooth
+* visually aligned
+* consistent everywhere
+
+The app should resemble a high-quality App Store / Play Store casual puzzle game experience.
+
+Please deeply analyze the existing codebase before editing anything and preserve all current working functionality while improving overall quality and consistency.
