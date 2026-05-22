@@ -1,343 +1,329 @@
-I have already shared and implemented the redesigned Store system files earlier.
+You are a senior Flutter game developer and Play Store production engineer.
 
-Now continue the implementation using the attached `game_screen.dart` and fully integrate all remaining gameplay-related features while MAINTAINING COMPLETE UI CONSISTENCY across the entire app.
+Analyze my complete Flutter game codebase and upgrade it into a production-ready mobile game application similar to Block Blast.
 
-IMPORTANT:
-Do NOT redesign randomly.
-Preserve my existing visual identity, theme system, glow styles, spacing patterns, gradients, and premium neon puzzle-game aesthetics already used in:
+Game Name: ZenWood
 
-* themes
-* store screen
-* game board
-* buttons
-* cards
-* dialogs
-* animations
+Tech Stack:
+- Flutter
+- Firebase
+- Google Mobile Ads
+- Firestore
+- Android Play Store deployment
 
-Your task is to deeply analyze the current architecture and continue from the previous implementation.
-
-==================================================
-MAIN GOAL
-=========
-
-Transform the gameplay experience into a polished premium casual puzzle game with:
-
-* smooth UX
-* aligned layouts
-* responsive design
-* clean app flow
-* rewarding gameplay loop
-* premium game feel
-
-Focus heavily on:
-
-* alignment consistency
-* spacing consistency
-* animation consistency
-* responsive layout fixes
-* gameplay polish
-* micro interactions
-* premium mobile game quality
+Your task is to:
+1. Analyze the full codebase architecture
+2. Find bad practices, bugs, UI issues, performance issues, memory leaks
+3. Refactor the project into scalable production-ready structure
+4. Keep the existing game functionality working
+5. Improve animations, game logic, state management, monetization, and Firebase integration
 
 ==================================================
-VERY IMPORTANT — GLOBAL ALIGNMENT FIX
-=====================================
-
-Before implementing features:
-
-Analyze the ENTIRE app flow and UI structure.
-
-Fix:
-
-* misaligned widgets
-* inconsistent paddings
-* uneven margins
-* overflowing layouts
-* broken responsive scaling
-* inconsistent button sizing
-* spacing issues
-* unsafe bottom layouts
-* awkward scroll behavior
-* clipped cards
-* improper aspect ratios
-* inconsistent dialog layouts
-
-Ensure the whole app feels professionally polished.
-
-Maintain consistency between:
-
-* Home screen
-* Game screen
-* Store screen
-* Dialogs
-* Reward popups
-* Theme system
-* Powerup HUD
-* Bottom sections
-
-Use proper Flutter responsive architecture:
-
-* SafeArea
-* Expanded/Flexible
-* AspectRatio
-* LayoutBuilder
-* MediaQuery where needed
-
-Avoid:
-
-* hardcoded heights
-* overflow hacks
-* inconsistent spacing values
-* deeply nested bad layouts
-
-==================================================
-FEATURES TO IMPLEMENT INSIDE game_screen.dart
-=============================================
-
-Implement all gameplay powerup systems fully.
-
+UI & LOADING SCREEN IMPROVEMENTS
 ==================================================
 
-1. POWERUP HUD
-   ==================================================
-
-Add a premium bottom gameplay HUD showing:
-
-* Hammer
-* Bomb
-* Lightning
-* Shuffle
-* Freeze Time
-* Rainbow Block
-* Combo Booster
-
-Each HUD item should show:
-
-* icon
-* quantity owned
-* active/inactive state
-* glow animation when usable
-* tap feedback
-* disabled appearance if unavailable
-
-Maintain premium neon gaming aesthetics.
+A. Splash / Loading Screen
+- Increase logo size moderately
+- Place logo exactly at center
+- Remove shadow effect completely
+- Add soft glow/highlight effect only
+- Make loading screen premium and smooth
+- Ensure responsive design for all screen sizes
 
 ==================================================
-2. HAMMER POWERUP
-=================
+LEVEL SYSTEM & GAME LOGIC
+==================================================
 
-Function:
-Player taps Hammer → selects a block → block breaks.
+B. Implement Proper Progressive Level System
+
+Current game needs professional level progression.
+
+Requirements:
+- Add dynamic level logic
+- Each level should have:
+  - score goal
+  - coin goal
+  - difficulty scaling
+  - increasing complexity
+  - faster gameplay on higher levels
+
+Example:
+Level 1:
+- Goal score: 500
+- Easy gameplay
+- No timer
+
+Level 2:
+- Goal score: 1000
+- Slightly harder
+
+Level 3+:
+- Add timer countdown
+- Increase difficulty
+- Reduce move flexibility
+
+Higher levels:
+- Harder block patterns
+- Faster gameplay
+- More strategic difficulty
+
+Create a scalable level configuration system.
+
+==================================================
+LEVEL COMPLETE POPUP
+==================================================
+
+C. After level completion:
+- Show animated dialog popup
+- Similar to professional mobile games
+- Include:
+  - "Level Completed"
+  - earned coins
+  - score
+  - next level button
+  - home/levels page button
+
+Popup animation:
+- scale animation
+- fade animation
+- particle/confetti effect if possible
+
+After completing level:
+- Rewarded ad should play automatically before next level
+
+==================================================
+COIN SYSTEM
+==================================================
+
+D. Global Coin Management System
+
+Coins earned by users must:
+- update instantly across app
+- reflect on:
+  - levels page
+  - store page
+  - profile page
+  - gameplay page
+
+Requirements:
+- Use centralized state management
+- Coins must persist using Firebase/local storage
+- User can spend coins in store
+- Purchased items should remain unlocked
+
+==================================================
+POWER-UP ANIMATIONS
+==================================================
+
+E. Add premium animations for power-ups:
+- Hammer smash animation
+- Bomb blast animation
+- Thunder/lightning effect
+- Screen shake effects
+- Particle explosions
+- Sound trigger integration support
+
+Animations should feel smooth and premium.
+
+==================================================
+LEADERBOARD SYSTEM
+==================================================
+
+F. Build 24-hour Global Leaderboard
+
+Requirements:
+- Store user score in Firebase Firestore
+- Track highest scores every 24 hours
+- Show:
+  - username
+  - highest score
+  - ranking
+
+Leaderboard resets every 24 hours automatically.
+
+Display leaderboard to all users globally.
+
+Implement:
+- Firebase structure
+- queries
+- indexes
+- security rules
+- cleanup logic
+- efficient leaderboard fetching
+
+==================================================
+PRODUCTION READY REQUIREMENTS
+==================================================
+
+G. Make the entire app Play Store production ready.
+
+Requirements:
+- optimize performance
+- remove unnecessary rebuilds
+- proper folder structure
+- scalable architecture
+- responsive UI
+- proper null safety
+- clean code
+- proper naming conventions
+- loading states
+- error handling
+- Firebase optimization
+- ad optimization
+- anti-crash improvements
+
+==================================================
+ADS & MONETIZATION
+==================================================
+
+H. Ads Improvements
+- Ensure rewarded ads work properly
+- Prevent ad spam
+- Proper ad lifecycle handling
+- Retry loading on failure
+- Optimize ad placements
+
+==================================================
+FIREBASE & BACKEND
+==================================================
+
+I. Firebase Improvements
+- optimize firestore reads/writes
+- secure firestore rules
+- improve realtime sync
+- improve user data structure
+- scalable collections
+
+==================================================
+VISUAL DESIGN & ANIMATION UPGRADE
+==================================================
+
+J. Make the entire app visually premium, colorful, modern, and highly animated WITHOUT changing:
+- auth flow
+- game logic
+- gameplay mechanics
+- app navigation flow
+- existing icons
+- existing core functionality
+
+The goal is to transform the app visually into a polished Play Store quality game while preserving the current system architecture and user experience.
 
 Requirements:
 
-* selection highlight animation
-* particle effect
-* decrement inventory
-* smooth feedback
+1. VISUAL STYLE
+- Improve overall UI aesthetics
+- Add modern colorful gradients
+- Use vibrant but professional gaming colors
+- Improve spacing, shadows, glow effects, borders, cards, and containers
+- Make UI feel premium and smooth
+- Maintain readability and accessibility
 
-==================================================
-3. BOMB POWERUP
-===============
+2. ANIMATIONS
+Add smooth animations throughout the app:
+- page transitions
+- button tap animations
+- popup animations
+- score increment animations
+- coin collection animations
+- floating effects
+- glowing effects
+- scale/fade transitions
+- reward animations
+- level unlock animations
+- leaderboard entry animations
+- loading animations
 
-Function:
-Explodes nearby blocks in radius.
+Animations must:
+- be smooth and optimized
+- not reduce FPS
+- not affect gameplay performance
+- work properly on low-end Android devices
 
-Requirements:
+3. GAME FEEL IMPROVEMENTS
+Add premium game feel effects:
+- subtle screen shake
+- particle effects
+- smooth block placement feedback
+- combo animations
+- satisfying destruction effects
+- smooth UI transitions
+- animated progress bars
+- animated buttons
 
-* explosion animation
-* glow pulse
-* particle effect
-* board update animation
-
-==================================================
-4. LIGHTNING POWERUP
-====================
-
-Function:
-Clear entire row or column.
+4. HOME SCREEN & LEVELS PAGE
+Enhance:
+- level cards
+- buttons
+- progress indicators
+- coin display
+- leaderboard section
+- store UI
+- profile section
 
 Add:
+- glowing borders
+- animated gradients
+- hover/tap feedback
+- animated cards
+- premium shadows
 
-* electric animation
-* row/column highlight
-* screen flash effect
+5. COLOR SYSTEM
+Create a proper color palette system:
+- primary colors
+- secondary colors
+- gradients
+- background colors
+- success/error/warning colors
 
-==================================================
-5. SHUFFLE POWERUP
-==================
+Maintain consistency across entire app.
 
-Function:
-Rearrange available pieces intelligently.
+6. PERFORMANCE REQUIREMENTS
+- Keep app lightweight
+- Avoid unnecessary widget rebuilds
+- Optimize animations
+- Use const widgets wherever possible
+- Maintain smooth gameplay performance
+- Ensure no animation lag during gameplay
 
-Requirements:
+7. RESPONSIVE DESIGN
+Ensure all UI improvements work properly on:
+- small Android devices
+- tablets
+- tall screens
+- different aspect ratios
 
-* smooth reshuffle animation
-* satisfying transitions
+8. DO NOT CHANGE
+STRICTLY DO NOT MODIFY:
+- authentication flow
+- Firebase auth system
+- game core mechanics
+- existing app navigation flow
+- app structure logic
+- existing icons
+- ad logic flow unless optimization needed
 
-==================================================
-6. FREEZE TIME
-==============
+Only enhance visuals, polish, UX, and animations.
 
-Function:
-Temporarily slows gameplay or pauses difficulty progression.
-
-Add:
-
-* frozen overlay effect
-* countdown UI
-* icy animation
-
-==================================================
-7. RAINBOW BLOCK
-================
-
-Function:
-Acts as wildcard block.
-
-Requirements:
-
-* rainbow glow
-* animated gradient effect
-* premium visuals
-
-==================================================
-8. COMBO BOOSTER
-================
-
-Function:
-Temporary score multiplier.
-
-Requirements:
-
-* combo meter UI
-* animated multiplier
-* reward feedback
+9. OUTPUT REQUIREMENTS
+- Update files fully
+- Mention file paths clearly
+- Keep code clean and production-ready
+- Use reusable widgets
+- Use scalable theme system
+- Maintain Flutter best practices
 
 ==================================================
-9. GAME OVER REVIVE FLOW
-========================
-
-Fully integrate the previously created GameOverReviveDialog.
-
-Flow:
-Game Over →
-Show premium revive dialog →
-Options:
-
-* Watch Ad to Continue
-* Use Hammer
-* Use Bomb
-* Restart
-
-Requirements:
-
-* blurred background
-* countdown timer
-* premium modal animations
-* smooth transitions
-* consistent spacing/alignment
-
-Only show powerup options if inventory exists.
-
+OUTPUT FORMAT
 ==================================================
-10. REWARDED ADS FLOW
-=====================
 
-Integrate rewarded ads properly with gameplay.
+For every improvement:
+1. Explain issue found
+2. Explain why it is bad
+3. Provide improved architecture
+4. Update code files fully
+5. Mention file paths
+6. Keep app runnable
 
-Examples:
+Do not break existing gameplay.
 
-* revive with ad
-* extra moves
-* free coins
-* reward claim
-
-Requirements:
-
-* loading states
-* error handling
-* success feedback
-* smooth UX
-
-Ads should feel rewarding, not annoying.
-
-==================================================
-11. GAMEPLAY FEEDBACK IMPROVEMENTS
-==================================
-
-Improve:
-
-* score animations
-* combo effects
-* line clear animations
-* haptic-like visual feedback
-* glowing effects
-* reward celebrations
-
-Make gameplay feel satisfying and premium.
-
-==================================================
-12. PERFORMANCE OPTIMIZATION
-============================
-
-Optimize:
-
-* animations
-* rebuilds
-* board rendering
-* particle effects
-* scrolling
-* state updates
-
-Avoid lag and frame drops.
-
-==================================================
-13. RESPONSIVE DESIGN
-=====================
-
-Ensure everything works properly on:
-
-* small Android devices
-* tablets
-* tall screens
-* landscape if possible
-
-Fix all:
-
-* overflow issues
-* bottom clipping
-* carousel scaling issues
-* HUD spacing problems
-
-==================================================
-14. CLEAN ARCHITECTURE
-======================
-
-Refactor where necessary:
-
-* reusable widgets
-* helper classes
-* animation components
-* dialogs
-* powerup handlers
-
-Maintain scalable Flutter architecture.
-
-==================================================
-15. FINAL POLISH
-================
-
-The final app should feel:
-
-* premium
-* modern
-* addictive
-* polished
-* smooth
-* visually aligned
-* consistent everywhere
-
-The app should resemble a high-quality App Store / Play Store casual puzzle game experience.
-
-Please deeply analyze the existing codebase before editing anything and preserve all current working functionality while improving overall quality and consistency.
+Act like a professional mobile game studio engineer.
